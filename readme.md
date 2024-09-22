@@ -2,8 +2,6 @@
 
 **Qualquer semelhança do nome da linguagem com pessoas reais ou não, é a mais pura e mera coincidência**
 
-Evi-Lasio é uma linguagem imaginária criada para as listas 4 e 5 de paradigmas. Ela é uma linguagem criada para ser inconveniente e confusa de ser usada, os nomes de funções não fazem sentido e é uma linguagem incrivelmente limitada.
-
 ## Índice
 
 - [Visão Geral](#visão-geral)
@@ -22,7 +20,7 @@ Evi-Lasio é uma linguagem imaginária criada para as listas 4 e 5 de paradigmas
 
 ## Visão Geral
 
-Evi-Lasio é uma linguagem divertida e educativa que permite aos usuários explorar a programação de uma maneira leve e acessível. A tradução do código para C ajuda a compreender a lógica por trás da programação.
+Evi-Lasio é uma linguagem imaginária criada para as listas 4 e 5 de paradigmas. Ela é uma linguagem criada para ser inconveniente e confusa de ser usada, os nomes de funções não fazem sentido e é uma linguagem incrivelmente limitada.
 
 ## Instalação
 

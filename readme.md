@@ -9,6 +9,7 @@
 - [Sintaxe](#sintaxe)
   - [Declarações de Variáveis](#1-declarações-de-variáveis)
   - [Instruções de Impressão](#2-instruções-de-impressão)
+  - [Input de Usuário](#3-input-de-usuário)
   - [Estruturas de Controle](#4-estruturas-de-controle)
     - [4.1 Instruções If](#41-instruções-if)
     - [4.2 Instruções Else](#42-instruções-else)

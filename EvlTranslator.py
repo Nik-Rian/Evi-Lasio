@@ -1,5 +1,6 @@
 import os
 import re
+import sys
 
 def replace_operators(condition):
     replacements = {
@@ -19,6 +20,10 @@ def translate_to_c(custom_code):
 
     if not custom_code:
         return ""
+    
+    if custom_code.endswith("vil?") and " eh " in custom_code:
+        var_name = custom_code.split(" eh ")[0].strip()
+        return f'scanf("%d", &{var_name});'
 
     if custom_code.startswith("evilas(") and custom_code.endswith("):"):
         inner_content = custom_code[len("evilas("):-len("):")].strip()
@@ -48,11 +53,15 @@ def translate_to_c(custom_code):
     
     if custom_code == "evi":
         return "else"
-
+    
     if custom_code.startswith("evil ") and " eh " in custom_code and custom_code.endswith(":"):
         var_declaration = custom_code[len("evil "):-len(":")].strip()
         var_name, var_value = var_declaration.split(" eh ")
         return f'int {var_name.strip()} = {var_value.strip()};'
+    
+    if custom_code.startswith("evil ") and custom_code.endswith(":"):
+        var_name = custom_code[len("evil "):-len(":")].strip()
+        return f'int {var_name.strip()};'
 
     match = re.match(r'(\w+) eh (\w+)\s*([\+\-\*\/])\s*(\w+):', custom_code)
     if match:
@@ -85,8 +94,26 @@ def write_c_file(output_path, c_code_lines):
         file.write('}\n')
 
 def main():
-    evl_file = 'main.evl'
-    c_file = 'main.c'
+    # Check if a file is passed as an argument
+    if len(sys.argv) > 1:
+        evl_file = sys.argv[1]
+    else:
+        evl_file = 'main.evl'
+
+    # Check for optional output argument
+    if len(sys.argv) > 2:
+        output_path = sys.argv[2]
+    else:
+        output_path = ''
+
+    c_file_name = os.path.basename(evl_file).replace('.evl', '.c')
+
+    if output_path and os.path.isdir(output_path):
+        c_file = os.path.join(output_path, c_file_name)
+    elif output_path and output_path.endswith('.c'):
+        c_file = output_path
+    else:
+        c_file = c_file_name
 
     if not os.path.exists(evl_file):
         raise FileNotFoundError(f"{evl_file} not found")

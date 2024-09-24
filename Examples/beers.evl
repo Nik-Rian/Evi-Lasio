@@ -1,0 +1,12 @@
+evil bottles eh 99:
+
+lasio(bottles Neh? 0)
+>
+evilas("*bottles* of beer on the wall, *bottles* of beer.\n"):
+evilas("Take one down, pass it around\n"):
+bottles eh bottles - 1:
+lasi(bottles eh? 0)
+>
+evilas("no more bottles of beer on the wall.\n"):
+<
+<

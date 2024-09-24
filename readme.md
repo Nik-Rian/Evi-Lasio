@@ -9,12 +9,12 @@
 - [Sintaxe](#sintaxe)
   - [Declarações de Variáveis](#1-declarações-de-variáveis)
   - [Instruções de Impressão](#2-instruções-de-impressão)
-  - [Estruturas de Controle](#3-estruturas-de-controle)
-    - [3.1 Instruções If](#31-instruções-if)
-    - [3.2 Instruções Else](#32-instruções-else)
-    - [3.3 Laços While](#33-laços-while)
-  - [Chaves](#4-chaves)
-  - [Operadores](#5-operadores)
+  - [Estruturas de Controle](#4-estruturas-de-controle)
+    - [4.1 Instruções If](#41-instruções-if)
+    - [4.2 Instruções Else](#42-instruções-else)
+    - [4.3 Laços While](#43-laços-while)
+  - [Chaves](#5-chaves)
+  - [Operadores](#6-operadores)
 - [Exemplo de Programa](#exemplo-de-programa)
 - [Conclusão](#conclusão)
 
@@ -24,21 +24,42 @@ Evi-Lasio é uma linguagem imaginária criada para as listas 4 e 5 de paradigmas
 
 ## Instalação
 
-Para usar o Evi-Lasio, você precisa do Python instalado em seu computador. Clone este repositório e execute o arquivo `tradutor.py` para traduzir seus arquivos `.evl` para C.
+Para usar o Evi-Lasio, você precisa do Python e GCC instalados em seu computador.
 
-```bash
-git clone https://github.com/seu-usuario/Evi-Lasio.git
-cd "Evi-Lasio"
-python tradutor.py
-```
+Ao clonar este repositório você pode ser usado o arquivo `Evi-Lasio.bat` para listar os arquivos .evl presentes no diretório `Input` e então o script irá traduzir, colocar o respectivo `.c` dentro da pasta `Output` e executar o programa.
+
+Alternativamente pode especificar um arquivo `.evl` na linha de comando, ou o script utilizará automaticamente o arquivo `main.evl` se nenhum for fornecido.
+
+### Exemplo de uso:
+
+1. Para usar um arquivo `.evl` específico:
+    ```bash
+    python EvlTranslator.py arquivo.evl
+    ```
+
+2. Para usar um arquivo dentro de uma pasta `Exemplo` especifica:
+    ```bash
+    pythom EvlTranslator.py ./Exemplo/arquivo.evl
+
+4. Para usar o arquivo `main.evl` por padrão:
+    ```bash
+    python EvlTranslator.py
+    ```
+
+Isso gerará um arquivo `.c` correspondente no mesmo diretório, como `seu_arquivo.c` ou `main.c`.
 
 ## Sintaxe
 
 ### 1. Declarações de Variáveis
 
-Para declarar uma variável, use a palavra-chave `evi`, seguida pelo nome da variável, pela palavra-chave `eh` e pelo valor inicial, terminando com dois pontos.
+Para declarar uma variável, use a palavra-chave `evi`, seguida pelo nome da variável.
+Para  declarar-la com um valor deve se usar seguido da declaração a palavra-chave `eh` seguida de um valor, terminando com dois pontos.
 
 **Sintaxe:**
+```
+evi <nome_da_variavel>:
+```
+
 ```
 evi <nome_da_variável> eh <valor>:
 ```
@@ -72,9 +93,28 @@ evilas("*garrafas* garrafas de cerveja na prateleira, *garrafas* de cerveja."):
 printf("%d garrafas de cerveja na prateleira, %d de cerveja.", garrafas, garrafas);
 ```
 
-### 3. Estruturas de Controle
+### 3. Input de Usuário
 
-#### 3.1 Instruções If
+Para fazer com que uma variavel receba um valor do usuário, utlize da palavra chave `eh` seguida da função `vil?`.
+
+**Sintaxe:**
+```
+<nome_variavel> eh vil?
+```
+
+**Exemplo:**
+```
+garrafas eh vil?
+```
+
+**Tradução para C:**
+```c
+scanf("%d", &garrafas);
+```
+
+### 4. Estruturas de Controle
+
+#### 4.1 Instruções If
 
 Use a palavra-chave `lasi` para criar uma instrução if. A condição usa o operador `eh?` para verificações de igualdade.
 
@@ -93,7 +133,7 @@ lasi(garrafas Neh? 0):
 if(garrafas != 0) {
 ```
 
-#### 3.2 Instruções Else
+#### 4.2 Instruções Else
 
 Use a palavra-chave `evio` para criar uma instrução else.
 
@@ -112,7 +152,7 @@ evio:
 else {
 ```
 
-#### 3.3 Laços While
+#### 4.3 Laços While
 
 Use a palavra-chave `lasio` para criar um laço while. A condição pode incluir vários operadores de comparação.
 
@@ -131,7 +171,7 @@ lasio(garrafas Neh? 0):
 while(garrafas != 0) {
 ```
 
-### 4. Chaves
+### 5. Chaves
 
 Use os símbolos `>` e `<` para indicar o início e o fim de um bloco de código.
 
@@ -149,7 +189,7 @@ Use os símbolos `>` e `<` para indicar o início e o fim de um bloco de código
 }
 ```
 
-### 5. Operadores
+### 6. Operadores
 
 Evi-Lasio suporta os seguintes operadores:
 
